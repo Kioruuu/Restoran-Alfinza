@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2025 at 10:05 AM
+-- Generation Time: Apr 27, 2025 at 04:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,13 +64,13 @@ CREATE TABLE `tb_masakan` (
 
 INSERT INTO `tb_masakan` (`id_masakan`, `nama_masakan`, `harga`, `stok`, `status_masakan`, `gambar_masakan`) VALUES
 (14, 'Sate Ayam', 30000.00, 37, 'tersedia', 'Sate Ayam.jpeg'),
-(15, 'Sayur Asem', 15000.00, 48, 'tersedia', 'Sayur Asem.jpeg'),
-(16, 'Ayam Geprek', 25000.00, 43, 'tersedia', 'Ayam Geprek.jpeg'),
+(15, 'Sayur Asem', 15000.00, 45, 'tersedia', 'Sayur Asem.jpeg'),
+(16, 'Ayam Geprek', 25000.00, 40, 'tersedia', 'Ayam Geprek.jpeg'),
 (17, 'Nasi Pecel', 15000.00, 49, 'tersedia', 'Nasi Pecel.jpg'),
-(18, 'Cincau', 8000.00, 97, 'tersedia', 'Cincau.jpg'),
+(18, 'Cincau', 8000.00, 95, 'tersedia', 'Cincau.jpg'),
 (19, 'Nasi Putih', 5000.00, 196, 'tersedia', 'no_image.png'),
 (20, 'Es Teh Manis', 5000.00, 99, 'tersedia', 'no_image.png'),
-(21, 'Es Jeruk', 7000.00, 79, 'tersedia', 'no_image.png'),
+(21, 'Es Jeruk', 7000.00, 77, 'tersedia', 'no_image.png'),
 (22, 'Soto Ayam', 20000.00, 47, 'tersedia', 'no_image.png'),
 (23, 'Gado-gado', 15000.00, 29, 'tersedia', 'no_image.png');
 
@@ -100,8 +100,14 @@ CREATE TABLE `tb_order` (
 INSERT INTO `tb_order` (`id_order`, `id_admin`, `id_pengunjung`, `waktu_pesan`, `no_meja`, `total_harga`, `uang_bayar`, `uang_kembali`, `status_order`, `catatan`) VALUES
 (15, NULL, 1, '2025-04-17 14:54:16', '6', 322000.00, 500000.00, 178000.00, 'sudah bayar', NULL),
 (16, NULL, 1, '2025-04-17 14:54:48', '1', 322000.00, 500000.00, 178000.00, 'sudah bayar', NULL),
-(17, NULL, 1, '2025-04-17 14:59:44', '1', 0.00, 2.00, 2.00, 'sudah bayar', NULL),
-(19, NULL, 1, '2025-04-17 15:04:01', '2', 14000.00, 20000.00, 6000.00, 'sudah bayar', NULL);
+(19, NULL, 1, '2025-04-17 15:04:01', '2', 14000.00, 20000.00, 6000.00, 'sudah bayar', NULL),
+(23, NULL, 3, '2025-04-17 15:14:26', '2', 106000.00, 120000.00, 14000.00, 'sudah bayar', NULL),
+(25, NULL, 1, '2025-04-24 17:50:15', '2', 7000.00, NULL, NULL, '', NULL),
+(27, NULL, 1, '2025-04-24 17:52:21', '6', 50000.00, NULL, NULL, '', NULL),
+(29, NULL, 1, '2025-04-24 17:57:47', '1', 60000.00, NULL, NULL, '', NULL),
+(31, NULL, 1, '2025-04-24 17:58:27', '3', 75000.00, NULL, NULL, '', NULL),
+(33, NULL, 1, '2025-04-24 21:51:28', '4', 14000.00, 15000.00, 1000.00, 'sudah bayar', NULL),
+(35, NULL, 2, '2025-04-24 22:06:01', '5', 30000.00, 50000.00, 20000.00, 'sudah bayar', NULL);
 
 -- --------------------------------------------------------
 
@@ -159,7 +165,12 @@ INSERT INTO `tb_pesan` (`id_pesan`, `id_user`, `id_order`, `id_masakan`, `jumlah
 (54, 1, 16, 21, 2, 'sudah'),
 (55, 1, 16, 21, 2, 'sudah'),
 (56, 1, 16, 22, 1, 'sudah'),
-(57, 1, 17, 21, 2, 'sudah');
+(57, 1, NULL, 21, 2, 'sudah'),
+(59, 3, 23, 15, 1, 'sudah'),
+(60, 3, 23, 16, 3, 'sudah'),
+(61, 3, 23, 18, 2, 'sudah'),
+(66, 1, 33, 21, 2, 'sudah'),
+(67, 2, 35, 15, 2, 'sudah');
 
 -- --------------------------------------------------------
 
@@ -241,7 +252,12 @@ INSERT INTO `tb_stok` (`id_stok`, `id_pesan`, `jumlah_terjual`, `status_cetak`) 
 (41, 53, 2, 'belum cetak'),
 (42, 54, 2, 'belum cetak'),
 (43, 55, 2, 'belum cetak'),
-(44, 56, 1, 'belum cetak');
+(44, 56, 1, 'belum cetak'),
+(46, 59, 1, 'belum cetak'),
+(47, 60, 3, 'belum cetak'),
+(48, 61, 2, 'belum cetak'),
+(55, 66, 2, 'belum cetak'),
+(56, 67, 2, 'belum cetak');
 
 -- --------------------------------------------------------
 
@@ -262,8 +278,10 @@ CREATE TABLE `tb_transaksi` (
 INSERT INTO `tb_transaksi` (`id_transaksi`, `id_order`, `tanggal_transaksi`) VALUES
 (2, 15, '2025-04-17 14:59:21'),
 (3, 16, '2025-04-17 14:59:36'),
-(4, 17, '2025-04-17 15:00:04'),
-(5, 19, '2025-04-17 15:04:58');
+(5, 19, '2025-04-17 15:04:58'),
+(8, 23, '2025-04-17 15:15:45'),
+(10, 33, '2025-04-24 22:05:05'),
+(11, 35, '2025-04-24 22:06:38');
 
 -- --------------------------------------------------------
 
@@ -379,7 +397,7 @@ ALTER TABLE `tb_masakan`
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tb_order_meja`
@@ -391,7 +409,7 @@ ALTER TABLE `tb_order_meja`
 -- AUTO_INCREMENT for table `tb_pesan`
 --
 ALTER TABLE `tb_pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `tb_restoran`
@@ -403,13 +421,13 @@ ALTER TABLE `tb_restoran`
 -- AUTO_INCREMENT for table `tb_stok`
 --
 ALTER TABLE `tb_stok`
-  MODIFY `id_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
