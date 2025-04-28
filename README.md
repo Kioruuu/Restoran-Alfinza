@@ -128,5 +128,5 @@ Silakan buat issue atau pull request untuk kontribusi.
 [MIT License](LICENSE)
 
 ## 👨‍💻 Developer
-[Alfinza/KioruuuIndustries]
+(Alfinza KioruuuIndustries)
 
